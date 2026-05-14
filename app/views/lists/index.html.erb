@@ -1,3 +1,17 @@
-<div class="container">
-  <h1>Lists</h1>
+<div class="mb-100 banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.rotoscopers.com/wp-content/uploads/2020/01/20th_Century_Fox_logo_black_and_white.jpg);">
+  <div class="container">
+    <h1>Movie Watchlist</h1>
+    <p>List all of your best and worst movie picks</p>
+    <%# <a class="btn btn-danger" href="#">Create List</a> %>
+    <%= link_to "Add a new list", new_list_path, class: "btn btn-danger" %>
+  </div>
+</div>
+
+
+<div class="cards">
+  <% @lists.each do |list| %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+    <%= link_to list.name, list_path(list) %>
+  </div>
+  <% end %>
 </div>
