@@ -6,6 +6,7 @@
         <%= image_tag bookmark.movie.poster_url %>
           <div class="card-body bg-dark">
             <p class="card-text text-warning"><%= bookmark.comment %></p>
+            <%= link_to "X", bookmark_path(bookmark), class: 'card-remove-link', data: { turbo_method: :delete} %>
           </div>
       </div>
     <% end %>
