@@ -12,6 +12,16 @@
   <% @lists.each do |list| %>
   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
     <%= link_to list.name, list_path(list) %>
+    <%= link_to "X", list_path(list), class: 'card-remove-link', data: { turbo_method: :delete, turbo_confirm: "Are you your you want to delete #{list.name}?"} %>
   </div>
   <% end %>
+</div>
+
+<div class="container">
+  <h1>Create a New List</h1>
+  <%= simple_form_for @list do |f| %>
+    <%= f.input :name %>
+    <%= f.submit %>
+  <% end %>
+  <%= link_to "Back to Lists", lists_path %>
 </div>
