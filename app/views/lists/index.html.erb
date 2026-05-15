@@ -3,25 +3,25 @@
     <h1>Movie Watchlist</h1>
     <p>List all of your best and worst movie picks</p>
     <%# <a class="btn btn-danger" href="#">Create List</a> %>
-    <%= link_to "Add a new list", new_list_path, class: "btn btn-danger" %>
   </div>
 </div>
 
 
 <div class="cards">
   <% @lists.each do |list| %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    <%= link_to list.name, list_path(list) %>
-    <%= link_to "X", list_path(list), class: 'card-remove-link', data: { turbo_method: :delete, turbo_confirm: "Are you your you want to delete #{list.name}?"} %>
+   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : 'https://happiclap.com/wp-content/uploads/2019/06/Everyday-Clapboard-1.jpg' %>)">
+    <span><%= list.name %></span>
+    <%= link_to "", list_path(list), class: "card-category-link" %>
+    <%= link_to "X", list_path(list), class: 'card-remove-link', data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete #{list.name}?"} %>
   </div>
   <% end %>
 </div>
 
-<div class="container">
+<div class="container text-warning">
   <h1>Create a New List</h1>
   <%= simple_form_for @list do |f| %>
     <%= f.input :name %>
-    <%= f.submit %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit class: "btn text-warning border border-warning"%>
   <% end %>
-  <%= link_to "Back to Lists", lists_path %>
 </div>

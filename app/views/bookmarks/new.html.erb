@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container text-warning">
   <h1>Add</h1>
   <%= simple_form_for [@list, @bookmark] do |f| %>
   <%= f.input :comment %>
-  <%= f.association :movie, include_blank: false %>
-  <%= f.submit %>
+  <%= f.association :movie, collection: @movies %>
+  <%= f.submit class: "btn text-warning border border-warning"%>
   <% end %>
 </div>
